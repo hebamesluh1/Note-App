@@ -6,4 +6,4 @@
 - react-icons for icons 
 - and context for toggle theme 
 #### In the near future it will be developed with context and custom hooks 
-You can see [live link](https://note-app-heba.netlify.app/)
+You can reach it by [live link](https://note-app-heba.netlify.app/)
