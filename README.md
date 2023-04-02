@@ -1,5 +1,5 @@
 ## 📌Note App 
-- Simple note app with two theme light and dark and responsive design , you can add and delete notes and search about your note through it . 
+ Simple note app with two theme light and dark and responsive design , you can add and delete notes and search about your note through it . 
 ### In this simple App I used React js with 
 - nanoid for generate random id 
 - styled components for ui 
