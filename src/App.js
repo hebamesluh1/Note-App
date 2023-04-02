@@ -1,13 +1,26 @@
-import NotesList from "./components/NotesList";
-import { Container } from "./global/components";
-import { GlobalStyle } from './global/style';
+import { useState, useEffect } from "react";
+
+import { darkTheme, lightTheme } from "./global/theme";
+import { ThemeProvider } from "styled-components";
+import { themeContext } from "./context/themeContext";
+
+import Home from "./pages/Home";
+
 
 function App() {
+  const [theme, setTheme] = useState(lightTheme);
+  useEffect(() => {
+    localStorage.getItem("theme") === darkTheme.theme
+      ? setTheme(darkTheme)
+      : setTheme(lightTheme);
+  }, []);
+
   return (
-    <Container>
-      <GlobalStyle />
-      <NotesList/>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <themeContext.Provider value={[theme, setTheme]}>
+        <Home />;
+      </themeContext.Provider>
+    </ThemeProvider>
   );
 }
 
