@@ -1,17 +1,21 @@
-import React,{memo} from 'react';
+import React from 'react';
 
 import { MdDeleteForever } from "react-icons/md";
 import { NoteFooter, NoteDiv } from './style';
+import { useNotesDispatch } from './../../context/NotesContext';
 
-const Note = memo(({ id, text, date, handleDeleteNote,color }) => {
-
+const Note = ({ id, text, date, color }) => {
+  const dispatch = useNotesDispatch();
   return (
-    <NoteDiv style={{backgroundColor:color}}>
+    <NoteDiv style={{ backgroundColor: color }}>
       <span>{text}</span>
       <NoteFooter>
         <small>{date}</small>
         <MdDeleteForever
-          onClick={() => handleDeleteNote(id)}
+          onClick={() => dispatch({
+            type: 'deleted',
+            id: id
+          })}
           className='delete-icon'
           size='1.3em'
         />
@@ -19,5 +23,4 @@ const Note = memo(({ id, text, date, handleDeleteNote,color }) => {
     </NoteDiv>
   )
 }
-)
 export default Note
