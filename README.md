@@ -5,6 +5,6 @@
 - styled components for ui 
 - react-icons for icons
 - use memo and use callback to optimize the rendering behaviour
-- and context for toggle theme 
-#### In the near future it will be developed with context and custom hooks 
+- and context for state managment 
+
 You can reach it by [live link](https://note-app-heba.netlify.app/)
