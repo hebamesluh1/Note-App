@@ -8,6 +8,12 @@ export const NoteDiv = styled.div`
     flex-direction:column;
     justify-content:space-between;
     white-space:pre-wrap;
+    textarea{
+        border:none;
+        outline:none;
+        resize:none;
+        background:transparent;
+    }
 `
 
 export const NoteFooter = styled.div`

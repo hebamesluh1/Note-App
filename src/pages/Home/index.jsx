@@ -4,11 +4,10 @@ import { useNotes } from '../../context/NotesContext';
 import { Container } from "../../global/components";
 import { GlobalStyle } from "../../global/style";
 
-
-
 import NotesList from "../../components/NotesList";
 import Search from "../../components/Search";
 import Header from './../../components/Header/index';
+
 
 const Home = () => {
   const notes = useNotes();
