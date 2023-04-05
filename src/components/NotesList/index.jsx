@@ -1,26 +1,25 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import Note from '../Note';
 import AddNote from '../AddNote';
 
 import { NotesListStyle } from './style';
 
-const NotesList = memo(({notes,handleAddNote,handleDeleteNote}) => {
+const NotesList = ({ notes }) => {
 
   return (
     <NotesListStyle>
-      {notes.map((note)=>
-          <Note  
-          key={note.id} 
-          id={note.id} 
-          text={note.text} 
-          date={note.date} 
-          handleDeleteNote={handleDeleteNote} 
-          color={note.color}/>
+      {notes.map((note) =>
+        <Note
+          key={note.id}
+          id={note.id}
+          text={note.text}
+          date={note.date}
+          color={note.color} />
       )}
-      <AddNote handleAddNote={handleAddNote} />
+      <AddNote />
     </NotesListStyle>
   )
-})
+}
 
 export default NotesList

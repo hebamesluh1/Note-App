@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import { nanoid } from "nanoid";
 
 import { AddNotes, SaveBtn } from './style'
 import { NoteFooter } from '../Note/style'
 
+import { useNotesDispatch } from './../../context/NotesContext';
 
-const AddNote = ({ handleAddNote }) => {
+
+const AddNote = () => {
 
     const [noteText, setNoteText] = useState('');
+    const dispatch = useNotesDispatch();
     const characterLimit = 200;
 
 
@@ -18,7 +22,11 @@ const AddNote = ({ handleAddNote }) => {
 
     const handleSave = () => {
         if (noteText.trim().length > 0) {
-            handleAddNote(noteText);
+            dispatch({
+                type: 'added',
+                id: nanoid(),
+                text: noteText,
+            });
             setNoteText("");
         }
     }
@@ -33,7 +41,7 @@ const AddNote = ({ handleAddNote }) => {
                 onChange={handleChange}
                 value={noteText}
             ></textarea>
-            
+
             <NoteFooter>
                 <small>{characterLimit - noteText.length} Remainding</small>
                 <SaveBtn onClick={handleSave}>Save</SaveBtn>
