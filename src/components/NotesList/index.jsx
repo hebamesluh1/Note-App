@@ -6,7 +6,6 @@ import AddNote from '../AddNote';
 import { NotesListStyle } from './style';
 
 const NotesList = memo(({notes,handleAddNote,handleDeleteNote}) => {
-  console.log('Render NoteList')
 
   return (
     <NotesListStyle>
