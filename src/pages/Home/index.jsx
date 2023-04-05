@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 
 import { Container } from "../../global/components";
 import { GlobalStyle } from "../../global/style";
@@ -28,7 +28,7 @@ const Home = () => {
 
   const [notes, setNotes] = useState(getLocalItems());
   const [search, setSearchText] = useState('');
-
+  console.log('Render App')
 
   //add notes 
   const addNote = (text) => {
@@ -45,10 +45,9 @@ const Home = () => {
 
 
   //delete notes 
-  const deleteNote = (id) => {
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
-  };
+  const deleteNote = useCallback((id) => {
+    setNotes( notes.filter((note) => note.id !== id))
+  },[notes])
 
 
   //save notes in local storage 
@@ -68,7 +67,7 @@ const Home = () => {
       <Search handleSearchNote={setSearchText} />
       <NotesList
         notes={notes.filter((note) =>
-          note.text.toLowerCase().includes(search)
+          note.text.includes(search)
         )}
         handleAddNote={addNote}
         handleDeleteNote={deleteNote}

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import Note from '../Note';
 import AddNote from '../AddNote';
 
 import { NotesListStyle } from './style';
 
-const NotesList = ({notes,handleAddNote,handleDeleteNote}) => {
+const NotesList = memo(({notes,handleAddNote,handleDeleteNote}) => {
+  console.log('Render NoteList')
+
   return (
     <NotesListStyle>
       {notes.map((note)=>
@@ -20,6 +22,6 @@ const NotesList = ({notes,handleAddNote,handleDeleteNote}) => {
       <AddNote handleAddNote={handleAddNote} />
     </NotesListStyle>
   )
-}
+})
 
 export default NotesList

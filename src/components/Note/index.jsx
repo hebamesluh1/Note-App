@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{memo} from 'react';
 
 import { MdDeleteForever } from "react-icons/md";
 import { NoteFooter, NoteDiv } from './style';
 
-const Note = ({ id, text, date, handleDeleteNote,color }) => {
+const Note = memo(({ id, text, date, handleDeleteNote,color }) => {
+  console.log('Render Note')
+
   return (
     <NoteDiv style={{backgroundColor:color}}>
       <span>{text}</span>
@@ -18,5 +20,5 @@ const Note = ({ id, text, date, handleDeleteNote,color }) => {
     </NoteDiv>
   )
 }
-
+)
 export default Note
