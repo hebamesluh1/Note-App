@@ -8,34 +8,35 @@ import { useNotesDispatch } from './../../context/NotesContext';
 const Note = ({ note }) => {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useNotesDispatch();
-  const characterLimit=200;
-
+  const characterLimit = 200;
+  const handleChange = (e) => {
+    if (characterLimit - e.target.value.length >= 0)
+      dispatch({
+        type: 'changed',
+        note: {
+          ...note,
+          text: e.target.value
+        }
+      })
+  }
   if (isEditing) {
     return (
       <NoteDiv style={{ backgroundColor: note.color }}>
-          <textarea
-            rows="8"
-            cols="10"
-            placeholder='Type to ad a note ... '
-            onChange={e => {
-              dispatch({
-                type: 'changed',
-                note: {
-                  ...note,
-                  text: e.target.value
-                }
-              });
-            }}
-            value={note.text}
-          ></textarea>
+        <textarea
+          rows="8"
+          cols="10"
+          placeholder='Type to ad a note ... '
+          onChange={handleChange}
+          value={note.text}
+        ></textarea>
 
-          <NoteFooter>
+        <NoteFooter>
           <small>{characterLimit - note.text.length} Remainding</small>
-            <MdDone
-              onClick={() => setIsEditing(false)}
-              className='delete-icon'
-              size='1.3em' />
-          </NoteFooter>
+          <MdDone
+            onClick={() => setIsEditing(false)}
+            className='delete-icon'
+            size='1.3em' />
+        </NoteFooter>
       </NoteDiv>)
   } else {
     return (
