@@ -51,6 +51,15 @@ function notesReducer(notes, action) {
                 color: randomColor()
             }];
         }
+        case 'changed': {
+            return notes.map(t => {
+                if (t.id === action.note.id) {
+                    return action.note;
+                } else {
+                    return t;
+                }
+            });
+        }
         case 'deleted': {
             return notes.filter(t => t.id !== action.id);
         }
